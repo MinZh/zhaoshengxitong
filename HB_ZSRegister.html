@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>注册</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/publicDataclass.js"></script>
+    <script src="/js/page-validation-min-3.1.0.js"></script>
+</head>
+<body>
+     <form class="form-horizontal">
+        <table class="table">
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>用户姓名</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_UserName" placeholder="用户姓名"></td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>学生身份证号</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_sfzh" placeholder="学生身份证号"></td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>联系电话</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_lxdh" placeholder="联系电话"></td>
+            </tr>
+            <tr class="row">
+                <td colspan="2" style="text-align: center">
+                    <label class="col-lg-6">
+                        <input name="rdo_rxlx" type="radio" value="xx" checked="checked">小学入口</label>
+
+                    <label class="col-lg-6">
+                        <input name="rdo_rxlx" type="radio" value="cz">初中入口</label>
+                </td>
+            </tr>
+            <tr class="row">
+                <td colspan="2" style="text-align: center">
+                    <button type="button" class="btn btn-default" id="btn_dl" onclick="Verification()">注  册</button>
+                </td>
+            </tr>
+            <tr class="row">
+                <td colspan="2" style="text-align: center">
+                    <button type="button" class="btn btn-default" style="padding-left: 20px;" onclick="clickop('HB_ZSLogin.html');">返回登录页</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+    function Verification() {
+        error_msg = "";
+        checkElement("txt_UserName", " 用户姓名");
+        CheckIDCardNum("txt_sfzh", " 身份证号");
+        checkInteger("txt_lxdh", " 联系电话");
+        if (error_msg != "") {
+            alert(error_msg.replace(/&nbsp;/g, "\n"));
+            return false;
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "ajax/HB_ZSLogin.ashx",
+                data: {
+                    type: "Register",
+                    UserName: $("#txt_UserName").val(),
+                    UserCode: $("#txt_sfzh").val(),
+                    LXDH: $("#txt_lxdh").val(),
+                    RXLX: $("input[name='rdo_rxlx']:checked").val()
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.status) {
+                        clickop("HB_ZSHome.html");
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                }
+            });
+        }
+    }
+
+</script>

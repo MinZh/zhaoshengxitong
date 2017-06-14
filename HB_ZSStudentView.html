@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>进度查询</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/publicDataclass.js"></script>
+</head>
+<body>
+    <table class="table">
+        <tr class="row">
+            <td class="col-sm-6" style="text-align: center;" colspan="2">
+                <label><a href="javascript:void(0)" onclick="clickop('HB_ZSHome.html')" target="_self">返回</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="javascript:void(0)" onclick="cancelop()"  target="_self">注销</a></label></td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>审核状态:</label></td>
+            <td>
+                <label id="txt_SHZT"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>录取状态:</label></td>
+            <td>
+                <label id="txt_ISLQ"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>入学类型:</label></td>
+            <td>
+                <label id="txt_RXLX"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label><b id="sp_nf">2017</b>年9月应就读年级:</label>
+
+            </td>
+            <td>
+                <label id="ddl_YDNJ"></label>
+            </td>
+        </tr>
+
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>学校:</label></td>
+            <td>
+                <label id="txt_XXMC"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>学年:</label></td>
+            <td>
+                <label id="ddl_year"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>学生姓名:</label></td>
+            <td>
+                <label id="txt_xm"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>身份证件号:</label></td>
+            <td>
+                <label id="txt_SFZJH"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>性别:</label></td>
+            <td>
+                <label id="txt_XB"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>出生年月:</label></td>
+            <td>
+                <label id="txt_CSNY"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>学籍号:</label></td>
+            <td>
+                <label id="txt_XJH"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>父亲姓名:</label></td>
+            <td>
+                <label id="txt_FQXM"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>父亲联系电话:</label></td>
+            <td>
+                <label id="txt_FQLXDH"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>母亲姓名:</label></td>
+            <td>
+                <label id="txt_MQXM"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>母亲联系电话:</label></td>
+            <td>
+                <label id="txt_MQLXDH"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>照片:</label></td>
+            <td>
+                <label id="zp"></label>
+            </td>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>户口类型:</label></td>
+            <td>
+                <label id="ddl_HKType"></label>
+            </td>
+        </tr>
+        <tr class="tr_hkqn row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>户口所在街镇:</label></td>
+            <td>
+                <label id="ddl_HK_JZ"></label>
+            </td>
+        </tr>
+        <tr class="tr_hkqn row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>户口所在社区及村:</label></td>
+            <td>
+                <label id="ddl_HK_SQ"></label>
+            </td>
+        </tr>
+        <tr class="tr_hkqn row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>户口所在详细地址:</label></td>
+            <td>
+                <label id="ddl_HK_XXDZ"></label>
+            </td>
+        </tr>
+        <tr class="row" id="tr_hkqw">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>户口所在地址:</label></td>
+            <td>
+                <label id="txt_HK_QWDZ"></label>
+        </tr>
+        <tr class="row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>居住类型:</label></td>
+            <td>
+                <label id="ddl_FC_LDtype"></label>
+            </td>
+        </tr>
+        <tr class="tr_gfqn row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label><b class="fc_ld">房产地所在</b>街镇:</label></td>
+            <td>
+                <label id="ddl_FC_JZ"></label>
+            </td>
+        </tr>
+        <tr class="tr_gfqn row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label><b class="fc_ld">房产地所在</b>社区及村:</label></td>
+            <td>
+                <label id="ddl_FC_SQ"></label>
+            </td>
+        </tr>
+
+        <tr class="tr_gfqn row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label><b class="fc_ld">房产地所在</b>详细地址:</label></td>
+            <td>
+                <label id="ddl_FC_XXDZ"></label>
+
+            </td>
+        </tr>
+        <tr class="row" id="tr_fcqw">
+            <td style="text-align: center; padding-top: 10px;">
+                <label><b class="fc_ld">房产地所在</b>地址:</label></td>
+            <td>
+                <label id="txt_GF_QWDZ"></label>
+            </td>
+        </tr>
+        <tr class="BHYY row">
+            <td style="text-align: center; padding-top: 10px;">
+                <label>驳回原因</label></td>
+            <td>
+                <label id="txt_BHYY"></label>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+<script type="text/javascript">
+    //初始化界面
+    $(function () {
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "view"
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                if (data.status) {
+                    var result_data = eval(data.row);
+                    var model = result_data[0];
+                    //$("#hid_StudentGuid").val(model.StudentGuid);
+                    $("#txt_xm").html(model.XM);
+                    $("#ddl_year").html(model.YearId);
+                    $("#sp_nf").html(model.YearId.substring(0, 4));
+                    $("#ddl_YDNJ").html(model.YDNJ);
+                    $("#txt_XXMC").html(model.XXMC);
+                    $("#txt_SHZT").html(model.SHZT);
+                    $("#txt_SHZT").html(model.SHZT);
+                    $("#txt_ISLQ").html(model.ISLQ);
+                    $("#txt_RXLX").html(model.RXLX);
+                    $("#txt_SFZJH").html(model.SFZJH);
+                    $("#txt_XB").html(model.XB);
+                    $("#txt_CSNY").html(model.CSNY);
+                    $("#txt_XJH").html(model.XJH);
+                    $("#txt_FQXM").html(model.FQXM);
+                    $("#txt_FQLXDH").html(model.FQLXDH);
+                    $("#txt_MQXM").html(model.MQXM);
+                    $("#txt_MQLXDH").html(model.MQLXDH);
+                    if (data.iszp) {
+                        $("#zp").html("<input type='button' value='上传照片查看' onclick='clickop(\"HB_ZSStudentZPView.html\")'/>");
+                    }
+                    else {
+                        $("#zp").html("暂无附上传照片！");
+                    }
+                    //户口
+
+
+                    if (model.HKSFQN == "1") {
+                        $("#ddl_HKType").html("区内");
+                        $("#ddl_HK_JZ").html(model.HK_JZGuid);
+                        $("#ddl_HK_SQ").html(model.HK_SQGuid);
+                        $("#ddl_HK_XXDZ").html(model.HK_XXDZGuid);
+                        $(".tr_hkqn").show();
+                        $("#tr_hkqw").hide();
+                    }
+                    else {
+                        $("#ddl_HKType").html("区外");
+                        $("#txt_HK_QWDZ").html(model.HK_QWDZ);
+                        $(".tr_hkqn").hide();
+                        $("#tr_hkqw").show();
+                    }
+                    if (model.GFLDRKType == "1") {
+                        $("#ddl_FC_LDtype").html("区内");
+                        $("#ddl_FC_JZ").html(model.GF_JZGuid);
+                        $("#ddl_FC_SQ").html(model.GF_SQGuid);
+                        $("#ddl_FC_XXDZ").html(model.GF_XXDZGuid);
+                        $(".tr_gfqn").show();
+                        $("#tr_fcqw").hide();
+                        $(".fc_ld").html("房产地所在");
+
+                    }
+                    else if (model.GFLDRKType == "4") {
+                        $("#ddl_FC_LDtype").html("流动人口");
+                        $("#ddl_FC_JZ").html(model.GF_JZGuid);
+                        $("#ddl_FC_SQ").html(model.GF_SQGuid);
+                        $("#ddl_FC_XXDZ").html(model.GF_XXDZGuid);
+                        $(".tr_gfqn").show();
+                        $("#tr_fcqw").hide();
+                        $(".fc_ld").html("工作地所在");
+                    }
+                    else if (model.GFLDRKType == "2") {
+                        $("#ddl_FC_LDtype").html("区外");
+                        $("#txt_GF_QWDZ").html(model.GF_QWDZ);
+                        $(".tr_gfqn").hide();
+                        $("#tr_fcqw").show();
+                        $(".fc_ld").html("房产地所在");
+                    }
+                    else {
+                        $("#ddl_FC_LDtype").html("未购房");
+                        $(".tr_gfqn").hide();
+                        $("#tr_fcqw").hide();
+                    }
+                    if (model.SHZT == "驳回") {
+                        $("#txt_BHYY").html(model.BHYY);
+                        $(".BHYY").show();
+                    } else {
+                        $(".BHYY").hide();
+                    }
+                }
+            }
+        });
+    });
+    
+    function GerisSession(data) {
+        if (data.status == "Session") {
+            clickop("HB_ZSLogin.html");
+
+        }
+    }
+</script>

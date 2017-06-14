@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>学生信息登记</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jquery.form.min.js"></script>
+    <script src="js/publicDataclass.js"></script>
+    <script src="/js/page-validation-min-3.1.0.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <form class="form-horizontal" id="form" method="post" >
+        <table class="table">
+            <tr class="row">
+                <td class="col-sm-6" style="text-align: center;" colspan="2">
+                    <label><a href="javascript:void(0)" onclick="clickop('HB_ZSHome.html')" target="_self">返回</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="cancelop()" target="_self">注销</a></label></td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口类型</label></td>
+                <td>
+                    <select class="form-control" id="ddl_HKType" name="ddl_HKType">
+                        <option value="1">区内</option>
+                        <option value="2">区外</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr_hkqn row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口所在街镇</label></td>
+                <td>
+                    <select class="form-control" id="ddl_HK_JZ" name="ddl_HK_JZ">
+                    </select>
+
+                </td>
+            </tr>
+            <tr class="tr_hkqn row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口所在社区及村</label></td>
+                <td>
+                    <select class="form-control" id="ddl_HK_SQ" name="ddl_HK_SQ">
+                    </select>
+
+                </td>
+            </tr>
+            <tr class="tr_hkqn row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口所在详细地址</label></td>
+                <td>
+                    <select class="form-control" id="ddl_HK_XXDZ" name="ddl_HK_XXDZ">
+                    </select>
+                    <input type="text" class="form-control" id="txt_HK_XXDZ" name="txt_HK_XXDZ" />
+                </td>
+            </tr>
+            <tr class="tr_hkqn row" id="tr_HK_xxdz">
+                <td colspan="2" style="text-align: center; padding-top: 10px;">
+                    <label id="lb_hk_xxdz"></label>
+                </td>
+            </tr>
+            <tr class="row" id="tr_hkqw">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口所在地址</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_HK_QWDZ" name="txt_HK_QWDZ"></td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>居住类型</label></td>
+                <td>
+                    <select class="form-control" id="ddl_FC_LDtype" name="ddl_FC_LDtype">
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr_gfqn row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label><b class="fc_ld">房产地所在</b>街镇</label></td>
+                <td>
+                    <select class="form-control" id="ddl_FC_JZ" name="ddl_FC_JZ">
+                    </select>
+
+                </td>
+            </tr>
+            <tr class="tr_gfqn row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label><b class="fc_ld">房产地所在</b>社区及村</label></td>
+                <td>
+                    <select class="form-control" id="ddl_FC_SQ" name="ddl_FC_SQ">
+                    </select>
+
+                </td>
+            </tr>
+
+            <tr class="tr_gfqn row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label><b class="fc_ld">房产地所在</b>详细地址</label></td>
+                <td>
+                    <select class="form-control" id="ddl_FC_XXDZ" name="ddl_FC_XXDZ">
+                    </select>
+                    <input type="text" class="form-control" id="txt_FC_XXDZ" name="txt_FC_XXDZ" />
+                </td>
+            </tr>
+            <tr class="tr_gfqn row" id="tr_fc_xxdz">
+                <td colspan="2" style="text-align: center; padding-top: 10px;">
+                    <label id="lb_fc_xxdz"></label>
+                </td>
+            </tr>
+            <tr class="row" id="tr_fcqw">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label><b class="fc_ld">房产地所在</b>地址</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_GF_QWDZ" name="txt_GF_QWDZ"></td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>登记学校</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_XXMC" disabled="disabled" />
+                    <input hidden="hidden" id="hid_Schoolid" name="hid_Schoolid" />
+                    <input hidden="hidden" id="hid_hjlx" name="hid_hjlx" />
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>学生姓名</label></td>
+                <td>
+                    <input type="text" class="form-control" id="txt_xm" name="txt_xm" />
+                    <input hidden="hidden" id="hid_StudentGuid" name="hid_StudentGuid" />
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>学年</label></td>
+                <td>
+                    <select class="form-control" id="ddl_year" name="ddl_year">
+                    </select>
+                </td>
+            </tr>
+
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label><b id="sp_nf">2017</b>年9月应就读年级</label>
+
+                </td>
+                <td>
+                    <select class="form-control" id="ddl_YDNJ" name="ddl_YDNJ">
+                    </select>
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>学生户口页照片</label></td>
+                <td>
+                    <input class="form-control" type="file" id="txt_XSHKYZP" name="txt_XSHKYZP" />
+                </td>
+            </tr>
+            <tr class="hid_XSHKYZP row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>已上传照片</label></td>
+                <td>
+                    <label id="hid_XSHKYZP"></label>
+                    <input type="checkbox" name="ck_XSHKYZP" />是否删除
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口本首页照片</label></td>
+                <td>
+                    <input class="form-control" type="file" id="txt_HKBSYZP" name="txt_HKBSYZP" />
+                </td>
+            </tr>
+            <tr class="hid_HKBSYZP row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>已上传照片</label></td>
+                <td>
+                    <label id="hid_HKBSYZP"></label>
+                    <input type="checkbox" name="ck_HKBSYZP" />是否删除
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>户口本增减页照片</label></td>
+                <td>
+                    <input class="form-control" type="file" id="txt_HKBZJYZP" name="txt_HKBZJYZP" />
+                </td>
+            </tr>
+            <tr class="hid_HKBZJYZP row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>已上传照片</label></td>
+                <td>
+                    <label id="hid_HKBZJYZP"></label>
+                    <input type="checkbox" name="ck_HKBZJYZP" />是否删除
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>监护人(房产证产权人)户口页照片</label></td>
+                <td>
+                    <input class="form-control" type="file" id="txt_JHRHKYZP" name="txt_JHRHKYZP" />
+                </td>
+            </tr>
+            <tr class="hid_JHRHKYZP row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>已上传照片</label></td>
+                <td>
+                    <label id="hid_JHRHKYZP"></label>
+                    <input type="checkbox" name="ck_JHRHKYZP" />是否删除
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>监护人产权证照片</label></td>
+                <td>
+                    <input class="form-control" type="file" id="txt_JHRCQZZP" name="txt_JHRCQZZP"  />
+                </td>
+            </tr>
+            <tr class="hid_JHRCQZZP row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>已上传照片</label></td>
+                <td>
+                    <label id="hid_JHRCQZZP"></label>
+                    <input type="checkbox" name="ck_JHRCQZZP" />是否删除
+                </td>
+            </tr>
+            <tr class="row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>居/暂住证照片</label></td>
+                <td>
+                    <input class="form-control" type="file" id="txt_ZZZZP" name="txt_ZZZZP"  />
+                </td>
+            </tr>
+            <tr class="hid_ZZZZP row">
+                <td style="text-align: center; padding-top: 10px;">
+                    <label>已上传照片</label></td>
+                <td>
+                    <label id="hid_ZZZZP"></label>
+                    <input type="checkbox" name="ck_ZZZZP" />是否删除
+                </td>
+            </tr>
+            <tr class="row">
+                <td colspan="2" style="text-align: center">
+                    <button type="submit" class="btn btn-default" id="Btn_Edit" onclick="save()">保  存</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+    var dataXZQH;
+    var rxxdtype;
+    $(function () {
+        $("#ddl_HKType").on("change", function () {
+            var lx = $(this).val();
+            fcldtype();
+            if (lx == "1") {
+                $(".tr_hkqn").show();
+                $("#tr_hkqw").hide()
+            }
+            else {
+                $(".tr_hkqn").hide();
+                $("#tr_hkqw").show()
+            }
+            GetBZshow()
+            GetBMSchool()
+        });
+        $("#ddl_FC_LDtype").on("change", function () {
+            var lx = $("#ddl_FC_LDtype").val();
+            if (lx == "1") {
+                $(".tr_gfqn").show();
+                $("#tr_fcqw").hide();
+                $(".fc_ld").html("房产地所在");
+            }
+            else if (lx == "2") {
+                $(".tr_gfqn").hide();
+                $("#tr_fcqw").show();
+                $(".fc_ld").html("房产地所在");
+            }
+            else if (lx == "3")//未购房
+            {
+                $(".tr_gfqn").hide();
+                $("#tr_fcqw").hide();
+            }
+            else if (lx == "4")//流动人口
+            {
+                $(".tr_gfqn").show();
+                $("#tr_fcqw").hide();
+                $(".fc_ld").html("工作地所在");
+
+            }
+            GetBZshow()
+            GetBMSchool();
+        });
+        $("#ddl_HK_JZ,#ddl_FC_JZ").on("change", function () {
+            var ddl_id = $(this).attr("id");
+            if (ddl_id == "ddl_HK_JZ") {
+                GetXZQH_Data("#ddl_HK_SQ", $(this).val());
+                GetXZQH_Data("#ddl_HK_XXDZ", $("#ddl_HK_SQ").val());
+            }
+            else {
+                GetXZQH_Data("#ddl_FC_SQ", $(this).val());
+                GetXZQH_Data("#ddl_FC_XXDZ", $("#ddl_FC_SQ").val());
+            }
+            GetBZshow()
+            GetBMSchool()
+        });
+        $("#ddl_HK_SQ,#ddl_FC_SQ").on("change", function () {
+            var ddl_id = $(this).attr("id");
+            if (ddl_id == "ddl_HK_SQ") {
+                GetXZQH_Data("#ddl_HK_XXDZ", $(this).val());
+            }
+            else {
+                GetXZQH_Data("#ddl_FC_XXDZ", $(this).val());
+            }
+            GetBZshow()
+            GetBMSchool();
+        });
+        $("#ddl_HK_XXDZ,#ddl_FC_XXDZ").on("change", function () {
+            var ddl_id = $(this).attr("id");
+            if (ddl_id == "ddl_HK_XXDZ") {
+                GetHK_xxdzBZ();
+            }
+            else {
+                GetFC_xxdzBZ();
+            }
+            GetBMSchool();
+        });
+        $("#ddl_year").on("change", function () {
+            var options = $("#ddl_year option:selected");
+            $("#sp_nf").html(options.text().substring(0, 4));
+        });
+
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "ddl_data"
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                if (data.status) {
+                    $("#ddl_year").html(data.year);
+                    $("#ddl_YDNJ").html(data.ydnj);
+                    $("#sp_nf").html(data.yearname);
+                }
+            }
+        });
+        //初始化界面
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "model"
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                rxxdtype = data.xdtype;
+                if (data.status) {
+                    if (data.message) {//未审核或者被驳回
+                        $("#Btn_Edit").show();
+                    }
+                    else {//已经审核通过不能修改
+                        $("#Btn_Edit").hide();
+
+                    }
+                    var result_data = eval(data.row);
+                    var model = result_data[0];
+
+                    $("#hid_StudentGuid").val(model.StudentGuid);
+                    $("#txt_xm").val(model.XM);
+                    $("#ddl_year").val(model.YearId);
+
+                    $("#ddl_YDNJ").val(model.YDNJ);
+                    $("#txt_XXMC").val(model.XXMC);
+                    $("#hid_Schoolid").val(model.SchoolId);
+                    //照片
+                    //$("#txt_XSHKYZP").val(model.XSHKYZP);
+                    //$("#txt_HKBZJYZP").val(model.HKBZJYZP);
+                    //$("#txt_HKBSYZP").val(model.HKBSYZP);
+                    //$("#txt_JHRHKYZP").val(model.JHRHKYZP);
+                    //$("#txt_JHRCQZZP").val(model.JHRCQZZP);
+                    //$("#txt_ZZZZP").val(model.ZZZZP);
+                    $("#hid_XSHKYZP").html(model.XSHKYZP);
+                    $("#hid_HKBSYZP").html(model.HKBSYZP);
+                    $("#hid_HKBZJYZP").html(model.HKBZJYZP);
+                    $("#hid_JHRHKYZP").html(model.JHRHKYZP);
+                    $("#hid_JHRCQZZP").html(model.JHRCQZZP);
+                    $("#hid_ZZZZP").html(model.ZZZZP);
+                    if (model.XSHKYZP == null || model.XSHKYZP == "") {
+                        $(".hid_XSHKYZP").hide();
+                    }
+                    else {
+                        $(".hid_XSHKYZP").show();
+                    }
+                    if (model.HKBSYZP == null || model.HKBSYZP == "") {
+                        $(".hid_HKBSYZP").hide();
+                    }
+                    else {
+                        $(".hid_HKBSYZP").show();
+                    }
+                    if (model.HKBZJYZP == null || model.HKBZJYZP == "") {
+                        $(".hid_HKBZJYZP").hide();
+                    }
+                    else {
+                        $(".hid_HKBZJYZP").show();
+                    }
+                    if (model.JHRHKYZP == null || model.JHRHKYZP == "") {
+                        $(".hid_JHRHKYZP").hide();
+                    }
+                    else {
+                        $(".hid_JHRHKYZP").show();
+                    }
+                    if (model.JHRCQZZP == null || model.JHRCQZZP == "") {
+                        $(".hid_JHRCQZZP").hide();
+                    }
+                    else {
+                        $(".hid_JHRCQZZP").show();
+                    }
+                    if (model.ZZZZP == null || model.ZZZZP == "") {
+                        $(".hid_ZZZZP").hide();
+                    }
+                    else {
+                        $(".hid_ZZZZP").show();
+                    }
+
+
+                    //户口
+                    $("#ddl_HKType").val(model.HKSFQN);
+                    fcldtype();
+                    $("#ddl_FC_LDtype").val(model.GFLDRKType);
+                    GetJMKZ();
+                    GetXZQH_Data("#ddl_HK_JZ,#ddl_FC_JZ", "");
+                    $("#ddl_HK_JZ").val(model.HK_JZGuid);
+                    GetXZQH_Data("#ddl_HK_SQ", model.HK_JZGuid);
+                    $("#ddl_HK_SQ").val(model.HK_SQGuid);
+                    GetXZQH_Data("#ddl_HK_XXDZ", model.HK_SQGuid);
+                    $("#ddl_HK_XXDZ").val(model.HK_XXDZGuid);
+
+                    if (model.HKSFQN == "2") {
+                        $("#txt_HK_QWDZ").val(model.HK_QWDZ);
+                    }
+                    else {
+                        $("#txt_HK_XXDZ").val(model.HK_QWDZ);
+                    }
+                    $("#ddl_FC_JZ").val(model.GF_JZGuid);
+                    GetXZQH_Data("#ddl_FC_SQ", model.GF_JZGuid);
+                    $("ddl_FC_SQ").val(model.GF_SQGuid);
+                    GetXZQH_Data("#ddl_FC_XXDZ", model.GF_SQGuid);
+                    $("ddl_FC_XXDZ").val(model.GF_XXDZGuid);
+
+                    if (model.GFLDRKType == "2") {
+                        $("#txt_GF_QWDZ").val(model.GF_QWDZ);
+                    }
+                    else {
+                        $("#txt_FC_XXDZ").val(model.HK_QWDZ);
+                    }
+                    $("#txt_XXMC").val(model.XXMC);
+                    $("#hid_Schoolid").val(model.SchoolId);
+
+                }
+                else {
+                    fcldtype();
+                    GetJMKZ();
+                    $(".hid_XSHKYZP").hide();
+                    $(".hid_HKBSYZP").hide();
+                    $(".hid_HKBZJYZP").hide();
+                    $(".hid_JHRHKYZP").hide();
+                    $(".hid_JHRCQZZP").hide();
+                    $(".hid_ZZZZP").hide();
+                    GetXZQH_Data("#ddl_HK_JZ,#ddl_FC_JZ", "");
+                    GetXZQH_Data("#ddl_HK_SQ,#ddl_FC_SQ", $("#ddl_HK_JZ").val());
+                    GetXZQH_Data("#ddl_HK_XXDZ,#ddl_FC_XXDZ", $("#ddl_HK_SQ").val());
+                    GetBMSchool();
+                }
+                GetBZshow();
+                $("#hid_XSHKYZP").hide();
+                $("#hid_HKBSYZP").hide();
+                $("#hid_HKBZJYZP").hide();
+                $("#hid_JHRHKYZP").hide();
+                $("#hid_JHRCQZZP").hide();
+                $("#hid_ZZZZP").hide();
+            }
+        });
+
+    });
+
+    function GerisSession(data) {
+        if (data.status == "Session") {
+            clickop("HB_ZSLogin.html");
+
+        }
+    }
+
+    //绑定行政区划
+    function GetXZQH_Data(kjid, pid) {
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "XZQH", pid: pid
+            },
+            dataType: "json",
+            success: function (data_jz) {
+                GerisSession(data_jz);
+                var data = data_jz.data;
+                var jz_ophtml = "";
+                if (kjid.indexOf("#ddl_HK_XXDZ") >= 0) {
+                    if (data.length > 0) {
+                        $("#ddl_HK_XXDZ").show();
+                        $("#txt_HK_XXDZ").hide();
+                    }
+                    else {
+                        $("#ddl_HK_XXDZ").hide()
+                        $("#txt_HK_XXDZ").show();
+                    }
+                    GetHK_xxdzBZ();
+                }
+                if (kjid.indexOf("#ddl_FC_XXDZ") >= 0) {
+                    if (data.length > 0) {
+                        $("#lb_fc_xxdz").show();
+                        $("#ddl_FC_XXDZ").show();
+                        $("#txt_FC_XXDZ").hide();
+                    }
+                    else {
+                        $("#ddl_FC_XXDZ").hide();
+                        $("#txt_FC_XXDZ").show();
+                    }
+                    GetFC_xxdzBZ()
+                }
+                for (var i = 0; i < data.length; i++) {
+                    jz_ophtml += "<option value='" + data[i]["ZSXZQHGuid"] + "'>" + data[i]["Name"] + "</option>   ";
+                }
+                $(kjid).html(jz_ophtml);
+            }
+        });
+    }
+
+    //绑定购房情况流动人口类型
+    function fcldtype() {
+        $("#ddl_FC_LDtype").html("");
+        var hklx = $("#ddl_HKType").val();
+        var fcldtlxophtml = "";//房产流动类型
+        if (hklx == "1") {//区内绑定
+            fcldtlxophtml = "<option value='1'>区内购房</option> \
+            <option value='2'>区外购房</option> \
+            <option value='3'>未购房</option> ";
+        }
+        else {//区外绑定
+            fcldtlxophtml = "<option value='1'>区内购房</option> \
+            <option value='4'>流动人口</option> ";
+
+        }
+        $("#ddl_FC_LDtype").html(fcldtlxophtml);
+        $(".tr_gfqn").show();
+        $("#tr_fcqw").hide();
+        $("#sp_fc1,#sp_fc2,#sp_fc3,#sp_fc4").html("房产地所在");
+
+    }
+    /// <summary>
+    /// 界面显示隐藏控制
+    /// </summary>
+    function GetJMKZ() {
+        var lx = $("#ddl_HKType").val();
+        if (lx == "1") {
+            $(".tr_hkqn").show();
+            $("#tr_hkqw").hide();
+        }
+        else {
+            $(".tr_hkqn").hide();
+            $("#tr_hkqw").show();
+        }
+        lx = $("#ddl_FC_LDtype").val();
+        if (lx == "1") {
+            $(".tr_gfqn").show();
+            $("#tr_fcqw").hide();
+            $(".fc_ld").html("房产地所在");
+        }
+        else if (lx == "2") {
+            $(".tr_gfqn").hide();
+            $("#tr_fcqw").show();
+        }
+        else if (lx == "3")//未购房
+        {
+            $(".tr_gfqn").hide();
+            $("#tr_fcqw").hide();
+        }
+        else if (lx == "4")//流动人口
+        {
+            $(".tr_gfqn").show();
+            $("#tr_fcqw").hide();
+            $(".fc_ld").html("工作地所在");
+        }
+    }
+    //显示隐藏备注
+    function GetBZshow() {
+        if ($("#lb_hk_xxdz").html() != "" && $("#lb_hk_xxdz").html() != null && $("#ddl_HKType").val() == "1") {
+            $("#tr_HK_xxdz").show()
+        }
+        else {
+            $("#tr_HK_xxdz").hide()
+        }
+        if ($("#lb_fc_xxdz").html() != "" && $("#lb_fc_xxdz").html() != null && ($("#ddl_FC_LDtype").val() == "1" || $("#ddl_FC_LDtype").val() == "4")) {
+            $("#tr_fc_xxdz").show()
+        }
+        else {
+            $("#tr_fc_xxdz").hide()
+        }
+    }
+
+    //户口详细地址备注
+    function GetHK_xxdzBZ() {
+        var hkxxdzguid = $("#ddl_HK_XXDZ").val();
+        if (hkxxdzguid == null || hkxxdzguid == "") {
+            hkxxdzguid = $("#ddl_HK_SQ").val();
+        }
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "XXDZBZ", id: hkxxdzguid
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                $("#lb_hk_xxdz").html(data.bz);
+                GetBZshow();
+            }
+        });
+    }
+    //购房，工作地详细地址备注
+    function GetFC_xxdzBZ() {
+        var fcxxdzguid = $("#ddl_FC_XXDZ").val();
+        if (fcxxdzguid == null || fcxxdzguid == "") {
+            fcxxdzguid = $("#ddl_FC_SQ").val();
+        }
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "XXDZBZ", id: fcxxdzguid
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                $("#lb_fc_xxdz").html(data.bz);
+                GetBZshow();
+            }
+        });
+    }
+
+    //根据现在的户口购房等信息得到对应的登记学校
+    function GetBMSchool() {
+        $("#hid_hjlx").val("0");
+        var hktype = $("#ddl_HKType").val();
+        var gfldtype = $("#ddl_FC_LDtype").val();
+        var xzqhguid = "";//行政区划guid
+        var xxmc = "";//学校名称
+        var schoolid = "";//学校guid
+        var xl = 0;//第几列的值顺序从0开始：三对口小学,非三对口小学,流动人口小学,三对口初中,非三对口初中,流动人口初中
+        if (hktype == "1") {
+            //户口区内
+            switch (gfldtype) {
+                case "1"://区内购房
+                    {
+                        // 区内购房,区内购房
+                        xzqhguid = $("#ddl_FC_SQ").val();
+                        if ($("#ddl_FC_XXDZ").val() != null && $("#ddl_FC_XXDZ").val() != "") {
+                            xzqhguid = $("#ddl_FC_XXDZ").val();
+                        }
+                        if ($("#ddl_HK_JZ").val() == $("#ddl_FC_JZ").val() && $("#ddl_HK_SQ").val() == $("#ddl_FC_SQ").val() && $("#ddl_HK_XXDZ").val() == $("#ddl_FC_XXDZ").val())//三对口
+                        {
+                            $("#hid_hjlx").val("1");
+                            if (rxxdtype.indexOf("Xiaoxue") >= 0) {
+                                xl = 0;
+                                //取三对口小学
+                            }
+                            else {
+                                xl = 3;
+                                //取三对口小学初中
+                            }
+                        }
+                        else {
+
+                            if (rxxdtype.indexOf("Xiaoxue") >= 0) {
+                                xl = 1;
+                                //取三对口小学
+                            }
+                            else {
+                                xl = 4;
+                                //取三对口小学初中
+                            }
+                        }
+
+                        break;
+
+                    }
+                case "2"://区外购房
+                case "3"://未购房
+                    {
+                        if ($("#ddl_HK_XXDZ").val() != null && $("#ddl_HK_XXDZ").val() != "") {
+                            xzqhguid = $("#ddl_HK_XXDZ").val();
+                        }
+                        else {
+                            xzqhguid = $("#ddl_HK_SQ").val();
+                        }
+                        if (rxxdtype.indexOf("Xiaoxue") >= 0) {
+                            xl = 1;
+                            //取三对口小学
+                        }
+                        else {
+                            xl = 4;
+                            //取三对口小学初中
+                        }
+                        break;
+                    }
+            }
+        }
+        else {
+            // 户口区外
+            xzqhguid = $("#ddl_FC_SQ").val();
+            if ($("#ddl_FC_XXDZ").val() != null && $("#ddl_FC_XXDZ").val() != "") {
+                xzqhguid = $("#ddl_FC_XXDZ").val();
+            }
+            if (gfldtype == "1")//区内购房
+            {
+                if (rxxdtype.indexOf("Xiaoxue") >= 0) {
+                    xl = 1;
+                    //取三对口小学
+                }
+                else {
+                    xl = 4;
+                    //取三对口小学初中
+                }
+            }
+            else//流动人口
+            {
+                if (rxxdtype.indexOf("Xiaoxue") >= 0) {
+                    xl = 2;
+                    //取三对口小学
+                }
+                else {
+                    xl = 5;
+                    //取三对口小学初中
+                }
+            }
+
+        }
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "Schoolid", xzqhguid: xzqhguid, xl: xl
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                if (data.status) {
+                    $("#txt_XXMC").val(data.xxmc);
+                    $("#hid_Schoolid").val(data.schoolid);
+                }
+                else {
+                    $("#txt_XXMC").val("");
+                    $("#hid_Schoolid").val("");
+                    alert(data.message);
+                }
+            }
+        });
+    }
+    /*--------------------------------------保存---------------------------------*/
+    var error_msg = "";
+    function Verification() {
+        error_msg = "";
+        checkElement("txt_xm", "学生姓名");
+        checkElement("ddl_year", "学年");
+        checkElement("ddl_YDNJ", "应读年级");
+        if (error_msg != "") {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    var flage = 0;
+    //保存
+    function save() {
+        if (flage == 0) {
+            var isyz = Verification();
+            var XSHKYZP=$("#txt_XSHKYZP").val();
+            var HKBZJYZP=$("#txt_HKBZJYZP").val();
+            var HKBSYZP=$("#txt_HKBSYZP").val();
+            var JHRHKYZP=$("#txt_JHRHKYZP").val();
+            var JHRCQZZP=$("#txt_JHRCQZZP").val();
+            var ZZZZP=$("#txt_ZZZZP").val();
+            var XM = $("#txt_xm").val();
+            var HK_XXDZ = $("#txt_HK_XXDZ").val();
+            var HK_QWDZ = $("#txt_HK_QWDZ").val();
+            var FC_XXDZ = $("#txt_FC_XXDZ").val();
+            var GF_QWDZ = $("#txt_GF_QWDZ").val();
+            if (isyz) {
+                flage = 1;
+                $("#form").ajaxForm({
+                    url: "ajax/HB_ZSStudent.ashx?type=save",
+                    type: "POST",//请求方式：get或post
+                    dataType: "json",//数据返回类型：xml、json、script
+                    data: {
+                            "XSHKYZP": escape(XSHKYZP),
+                            "HKBZJYZP": escape(HKBZJYZP),
+                            "HKBSYZP": escape(HKBSYZP),
+                            "JHRHKYZP": escape(JHRHKYZP),
+                            "JHRCQZZP": escape(JHRCQZZP),
+                            "ZZZZP": escape(ZZZZP),
+                            "XM": escape(XM),
+                            "HK_XXDZ": escape(HK_XXDZ),
+                            "HK_QWDZ": escape(HK_QWDZ),
+                            "FC_XXDZ": escape(FC_XXDZ),
+                            "GF_QWDZ": escape(GF_QWDZ)
+                    },//自定义提交的数据,
+                    //contentType: "application/x-www-form-urlencoded; charset=gb2312",
+                   // scriptCharset: 'gb2312',
+                    success: function (data) {//表单提交成功回调函数
+                        flage = 0;
+                        if (data.status) {
+                            alert("保存成功！");
+                            clickop("HB_ZSHome.html");
+                        }
+                        else {
+                            alert("保存失败！");
+                        }
+                    },
+                    error: function (err) {
+                        flage = 0;
+                        alert("保存异常！");
+                    }
+                });
+            }
+            else {
+                var newstart = error_msg.replace(/&nbsp;/g, " ");
+                alert(newstart);
+            }
+        }
+    }
+
+
+</script>

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>照片查看</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/publicDataclass.js"></script>
+    <style type="text/css">
+        .form-group { 
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div><a href="javascript:void(0)" onclick="clickop('HB_ZSStudentView.html')" target="_self">返回</a></div>
+        <div class="txt_XSHKYZP form-group">
+            <label for="exampleInputEmail1">学生户口页照片</label><br />
+            <img src="img/暂无图片.jpg" alt="..." class="img-thumbnail" id="txt_XSHKYZP" width="300">
+        </div>
+        <div class="txt_HKBSYZP form-group">
+            <label for="exampleInputEmail1">户口本首页照片</label><br />
+            <img src="img/暂无图片.jpg" alt="..." class="img-thumbnail" id="txt_HKBSYZP" width="300">
+        </div>
+        <div class="txt_HKBZJYZP form-group">
+            <label for="exampleInputEmail1">户口本增减页照片</label><br />
+            <img src="img/暂无图片.jpg" alt="..." class="img-thumbnail" id="txt_HKBZJYZP" width="300">
+        </div>
+        <div class="txt_JHRHKYZP form-group">
+            <label for="exampleInputEmail1">监护人(房产证产权人)户口页照片</label><br />
+            <img src="img/暂无图片.jpg" alt="..." class="img-thumbnail" id="txt_JHRHKYZP" width="300">
+        </div>
+        <div class="txt_JHRCQZP form-group">
+            <label for="exampleInputEmail1">监护人产权证照片</label><br />
+            <img src="img/暂无图片.jpg" alt="..." class="img-thumbnail" id="txt_JHRCQZP" width="300">
+        </div>
+        <div class="txt_JZZZZP form-group">
+            <label for="exampleInputEmail1">居/暂住证照片</label><br />
+            <img src="img/暂无图片.jpg" alt="..." class="img-thumbnail" id="txt_JZZZZP" width="300">
+        </div>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            method: "post",
+            async: false,
+            url: "ajax/HB_ZSStudent.ashx",
+            data: {
+                type: "ZP"
+            },
+            dataType: "json",
+            success: function (data) {
+                GerisSession(data);
+                if (data.status) {
+                    var model = eval(data.row);
+                    if (model.XSHKYZP != null && model.XSHKYZP != "") {
+                        $("#txt_XSHKYZP").attr("src", "/UpLoad/ZSTemp/" + model.XSHKYZP);
+                        $(".txt_XSHKYZP").show();
+                    }
+                    if (model.HKBSYZP != null && model.HKBSYZP != "") {
+                        $("#txt_HKBSYZP").attr("src", "/UpLoad/ZSTemp/" + model.HKBSYZP);
+                        $(".txt_HKBSYZP").show();
+                    }
+                    if (model.HKBZJYZP != null && model.HKBZJYZP != "") {
+                        $("#txt_HKBZJYZP").attr("src", "/UpLoad/ZSTemp/" + model.HKBZJYZP);
+                        $(".txt_HKBZJYZP").show();
+                    }
+                    if (model.JHRHKYZP != null && model.JHRHKYZP != "") {
+                        $("#txt_JHRHKYZP").attr("src", "/UpLoad/ZSTemp/" + model.JHRHKYZP);
+                        $(".txt_JHRHKYZP").show();
+                    }
+                    if (model.JHRCQZZP != null && model.JHRCQZZP != "") {
+                        $("#txt_JHRCQZP").attr("src", "/UpLoad/ZSTemp/" + model.JHRCQZZP);
+                        $(".txt_JHRCQZP").show();
+                    }
+                    if (model.ZZZZP != null && model.ZZZZP != "") {
+                        $("#txt_JZZZZP").attr("src", "/UpLoad/ZSTemp/" + model.ZZZZP);
+                        $(".txt_JZZZZP").show();
+                    }
+                }
+            }
+        });
+    });
+    function GerisSession(data) {
+        if (data.status == "Session") {
+            clickop("HB_ZSLogin.html");
+
+        }
+    }
+</script>
